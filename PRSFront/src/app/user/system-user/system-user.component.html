@@ -1,0 +1,146 @@
+<div *ngIf="isSucessEdit" class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Success Message</strong> You Successfully Deleted.
+    <button (click)="exitMessage()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<form [formGroup]="userForm" (ngSubmit)="userRegister()">
+    <input type="number" formControlName="id" hidden>
+    <div class="row">
+        <div class=" col-md-3">
+            <label for="fName">First Name<span class="spanStart"style="color: red;">*</span></label>
+            <input type="text" formControlName="fName" class="form-control" id="fName" placeholder="First Name">
+        </div>
+        <div class=" col-md-3">
+            <label for="lName">Last Name<span class="spanStart"style="color: red;">*</span></label>
+            <input type="text" formControlName="lName" class="form-control" id="lName" placeholder="Last Name">
+        </div>
+        <div class=" col-md-3">
+            <label for="mName">Middle Name</label>
+            <input type="text" formControlName="mName" class="form-control" id="mName"
+                placeholder="Middle Name (Optional)">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <label>Gender<span class="spanStart" style="color: red;">*</span></label>
+            <br>
+            <div class="form-check form-check-inline">
+
+                <input class="form-check-input" formControlName="gender" type="radio" name="gender" id="male"
+                    value="Male">
+                <label class="form-check-label" for="male">Male</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" formControlName="gender" type="radio" name="gender" id="female"
+                    value="Female">
+                <label class="form-check-label" for="female">Female</label>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label for="inputAddress">Address<span class="spanStart" style="color: red;">*</span></label>
+            <input type="text" class="form-control" formControlName="address" id="inputAddress"
+                placeholder="1000 N 4th St">
+        </div>
+
+    </div>
+
+
+    <div class="row">
+        <div class="form-group col-md-3">
+            <label for="datebirth">Date Of Birth<span class="spanStart" style="color: red;">*</span></label>
+            <input type="datetime" formControlName="dateOfBirth" class="form-control" id="datebirth">
+        </div>
+        <div class="form-group col-md-3">
+            <label for="phoneNumber">Phone Number<span class="spanStart" style="color: red;">*</span></label>
+            <input type="text" formControlName="phoneNumber" class="form-control" id="phoneNumber">
+        </div>
+        <div class="form-group col-md-3">
+            <label for="email">Email<span class="spanStart" style="color: red;">*</span></label>
+            <input type="email" formControlName="email" class="form-control" id="email">
+        </div>
+     
+    </div>
+    <div class="row">
+        <div class="col-md-7">
+
+        </div>
+        <div class="col-md-3">
+            <button *ngIf="isEdit" type="submit" class="btn btn-primary"
+                style="margin-left: 10em;margin-top: 1em;">Update</button>
+            <button *ngIf="!isEdit" type="submit" class="btn btn-primary" style="margin-left: 10em;margin-top: 1em;">
+                Register</button>
+        </div>
+
+    </div>
+</form>
+
+<div class="row">
+    <div class="col-md-8">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Middle Name</th>
+
+                    <th scope="col">Date Of Birth</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Zip</th>
+                    <th colspan="2">Operations</th>
+                </tr>
+            </thead>
+
+            <tbody *ngFor="let user of listuser;let i = index">
+                <tr>
+                    <th scope="row">{{i}}</th>
+
+                    <td>{{user.fName}}</td>
+                    <td>{{user.lName}}</td>
+                    <td>{{user.mName}}</td>
+                    <td>{{user.dateOfBirth}}</td>
+                    <td>{{user.gender}}</td>
+                    <td>{{user.address}}</td>
+                    <td>{{user.zip}}</td>
+                    <!-- <td> <i (click)="deleteResto(item.id)" style="font-size:24px; color: red;" class="fa fa-trash"></i>
+                    </td>
+                    <td> <i routerLink="/update/{{item.id}}" style="font-size:24px;color: blue;" class="fa fa-edit"></i>
+                    </td>
+                    <td> <i (click)="deleteUserModal(modalData,user.id);" style="font-size:24px; color: red;"
+                            class="fa fa-trash"></i></td>
+                    <td> <i (click)="editUser(user.id);" style="font-size:24px;color: blue;" class="fa fa-edit"></i>
+                    </td> -->
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- <button class="btn btn-danger" (click)="triggerModal(modalData)">Open Modal</button> -->
+
+<!-- <ng-template #modalData let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Angular Bootstrap Modal Popup</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p><strong>Are you sure you want to delete
+         <span class="text-primary">{{user.fName}} {{user.lName}} with </span>ID: {{user.id}}</strong></p>
+       -->
+<!-- <p>All data related to west view profile will be removed permanently.
+      </p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" (click)="confirmeDelete(user.id)">Delete</button>
+      <button type="button" class="btn btn-danger" (click)="modal.close('Save click')">Close</button>
+    </div>
+  </ng-template>
+  
+  <app-footer></app-footer>
+   -->
+<app-footer></app-footer>

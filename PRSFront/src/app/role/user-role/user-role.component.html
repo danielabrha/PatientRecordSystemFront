@@ -1,0 +1,35 @@
+<!-- <form [formGroup]="userroleForm" (ngSubmit)="UserroleRegister()" style="padding-bottom: 2em;">
+    <input type="number" formControlName="id" hidden>
+    <div class="row">
+        <div class=" col-md-3">
+            <label for="roleName">User Name<span class="spanStart"style="color: red;">*</span></label>
+            <input type="text" formControlName="roleName" class="form-control" id="roleName" placeholder="First Name">
+        </div>
+        <div class=" col-md-3">
+            <label for="roleName">Role Name<span class="spanStart"style="color: red;">*</span></label>
+            <input type="text" formControlName="roleName" class="form-control" id="roleName" placeholder="First Name">
+        </div>
+        <div class="col-md-3" style="padding-top: 1em;">
+            <button *ngIf="isEdit" type="submit" class="btn btn-primary"
+                style="margin-left: 10em;margin-top: 1em;">Update</button>
+            <button *ngIf="!isEdit" type="submit" class="btn btn-primary" style="margin-left: 10em;margin-top: 1em;">
+                Register</button>
+        </div>
+    </div>
+</form> -->
+<ng-multiselect-dropdown
+  [placeholder]="'custom placeholder'"
+  [settings]="dropdownSettings"
+  [data]="dropdownList"
+  (onSelect)="onItemSelect($event)"
+  (onSelectAll)="onSelectAll($event)"
+>
+</ng-multiselect-dropdown>
+<ng-multiselect-dropdown
+  [placeholder]="'custom placeholder'"
+  [settings]="dropdownSettings"
+  [data]="dropdownList"
+  (onSelect)="onItemSelect($event)"
+  (onSelectAll)="onSelectAll($event)"
+>
+</ng-multiselect-dropdown>

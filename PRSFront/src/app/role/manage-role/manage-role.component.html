@@ -1,0 +1,55 @@
+<div *ngIf="isSucessEdit" class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Success Message</strong> You Successfully Edited.
+    <button (click)="exitMessage()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<form [formGroup]="roleForm" (ngSubmit)="roleRegister()" style="padding-bottom: 2em;">
+    <input type="number" formControlName="id" hidden>
+    <div class="row">
+        <div class=" col-md-3">
+            <label for="roleName">Role Name<span class="spanStart"style="color: red;">*</span></label>
+            <input type="text" formControlName="roleName" class="form-control" id="roleName" placeholder="First Name">
+        </div>
+        <div class="col-md-3" style="padding-top: 1em;">
+            <button *ngIf="isEdit" type="submit" class="btn btn-primary"
+                style="margin-left: 10em;margin-top: 1em;">Update</button>
+            <button *ngIf="!isEdit" type="submit" class="btn btn-primary" style="margin-left: 10em;margin-top: 1em;">
+                Register</button>
+        </div>
+    </div>
+</form>
+
+<div class="row">
+    <div class="col-md-8">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Role Name</th>
+
+                    
+                    <th colspan="2">Operations</th>
+                </tr>
+            </thead>
+
+            <tbody *ngFor="let role of listRole;let i = index">
+                <tr>
+                    <th scope="row">{{i}}</th>
+
+                    <td>{{role.roleName}}</td>
+                    
+                    <!-- <td> <i (click)="deleteResto(item.id)" style="font-size:24px; color: red;" class="fa fa-trash"></i>
+                    </td>
+                    <td> <i routerLink="/update/{{item.id}}" style="font-size:24px;color: blue;" class="fa fa-edit"></i>
+                    </td>
+                    <td> <i (click)="deleteUserModal(modalData,user.id);" style="font-size:24px; color: red;"
+                            class="fa fa-trash"></i></td>
+                    <td> <i (click)="editUser(user.id);" style="font-size:24px;color: blue;" class="fa fa-edit"></i>
+                    </td> -->
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
