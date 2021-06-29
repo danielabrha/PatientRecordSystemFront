@@ -1,0 +1,47 @@
+<div style="margin-bottom: 2em;">
+    <form (submit)="saveLabOrder()">
+        <div class="row">
+            <div class="col-md-3">
+                <label for="inputState">Patient</label>
+                <select id="inputState" [(ngModel)]="selectedpatientId" (change)="onPatientSelect();"
+                    class="form-control">
+                    <option selected>Choose...</option>
+                    <option *ngFor="let patient of listPatient" [value]="patient.id">{{patient.fName}} {{patient.lName}}
+                    </option>
+                </select>
+            </div>
+            <div class="col-md-5" style="margin-top: 2em;">
+                <ng-multiselect-dropdown [placeholder]="'Select Lab Test'" [settings]="dropdownSettings"
+                    [data]="dropdownList" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
+                </ng-multiselect-dropdown>
+            </div>
+            <div class="row">
+                <div class="col-md-7"></div>
+                <div class="col-md-1">
+                    <button style="float: right;margin-top: 1em;" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<div>
+    <table datatable [dtOptions]="dtOptions" class="row-border hover" style="padding-top: 4em;">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>UserName</th>
+                <th>RoleName</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let labOrder of listLabOrder;let i= index">
+                <td>{{ i+1 }}</td>
+                <td>{{ labOrder.pFname}} {{listLabOrder}}</td>
+                <td>{{ labOrder.labOrderName }}</td>
+                <td>{{ labOrder.dateRegistered }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

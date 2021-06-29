@@ -1,0 +1,42 @@
+<ng-template #modalData let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Patient Case Registratiom Form</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+    <app-patient-operation (patient)="savePatient($event)">
+
+    </app-patient-operation>
+</ng-template>
+  
+
+<button class="btn btn-primary" style="float: right;margin-bottom: 3em;" (click)="addNewPatient(modalData)">Add New Patient</button>
+<table datatable [dtOptions]="dtOptions" class="row-border hover" >
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Middle Name</th>
+        <th>DateOfBirth</th>
+        <th>Gender</th>
+        <th>patient Card Number</th>
+        <th >Operations</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let patient of listPatient;let i= index">
+        <td>{{ i+1 }}</td>
+        <td>{{ patient.fName }}</td>
+        <td>{{ patient.lName }}</td>
+        <td>{{ patient.mName }}</td>
+        <td>{{ patient.dateOfBirth }}</td>
+        <td>{{ patient.gender }}</td>
+        <td>{{ patient.patientcardNumber }}</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>

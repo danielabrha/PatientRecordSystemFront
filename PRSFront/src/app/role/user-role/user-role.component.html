@@ -18,7 +18,7 @@
     </div>
 </form> -->
 <ng-multiselect-dropdown
-  [placeholder]="'custom placeholder'"
+  [placeholder]="'Select User'"
   [settings]="dropdownSettings"
   [data]="dropdownList"
   (onSelect)="onItemSelect($event)"
@@ -26,10 +26,29 @@
 >
 </ng-multiselect-dropdown>
 <ng-multiselect-dropdown
-  [placeholder]="'custom placeholder'"
+  [placeholder]="'Select Role'"
   [settings]="dropdownSettings"
   [data]="dropdownList"
   (onSelect)="onItemSelect($event)"
   (onSelectAll)="onSelectAll($event)"
 >
 </ng-multiselect-dropdown>
+<button style="float: right;margin-top: 1em;" class="btn btn-primary">Save</button>
+
+
+<table datatable [dtOptions]="dtOptions" class="row-border hover">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>UserName</th>
+      <th>RoleName</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let userrole of userroles;let i= index">
+      <td>{{ i+1 }}</td>
+      <td>{{ userrole.userName }}</td>
+      <td>{{ userrole.roleName }}</td>
+    </tr>
+  </tbody>
+</table>

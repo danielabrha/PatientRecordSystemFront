@@ -18,8 +18,34 @@ export class UserRoleComponent implements OnInit {
     userId: new FormControl(''),
 
   });
+  title = 'datatables';
+  dtOptions: DataTables.Settings = {};
+  userroles=[{
+    "userName":"@aman.com",
+    "roleName":"Admin"
+  },{
+    "userName":"@ha.com",
+    "roleName":"Doctor"
+  },{
+    "userName":"@ba.com",
+    "roleName":"Laboratorist"
+  },{
+    "userName":"@ha.com",
+    "roleName":"Patient"
+  },{
+    "userName":"@aman.com",
+    "roleName":"Admin"
+  },{
+    "userName":"@aman.com",
+    "roleName":"Admin"
+  }]
   constructor() { }
   ngOnInit() {
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 5,
+      processing: true
+    };
     this.dropdownList = [
       { 'item_id': 1, 'item_text': 'Mumbai' },
       { 'item_id': 2, 'item_text': 'Bangaluru' },

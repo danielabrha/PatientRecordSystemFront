@@ -12,6 +12,8 @@ export class ManageRoleComponent implements OnInit {
   isSucessEdit = false;
   isDelete = false;
   roleForm:any;
+  title = 'datatables';
+  dtOptions: DataTables.Settings = {};
   constructor() { 
     this.roleForm = new FormGroup({
       roleName: new FormControl(''),
@@ -21,6 +23,12 @@ export class ManageRoleComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 5,
+      processing: true
+    };
+  
   }
   roleRegister() {}
   exitMessage(){}

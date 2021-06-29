@@ -5,6 +5,10 @@ import { SystemUserComponent } from '../app/user/system-user/system-user.compone
 import {UsermanagementComponent} from '../app/user/usermanagement/usermanagement.component';
 import {ManageRoleComponent} from '../app/role/manage-role/manage-role.component';
 import {UserRoleComponent} from '../app/role/user-role/user-role.component'
+import { ListPatientComponent} from './patient/list-patient/list-patient.component';
+import {PatientSymptomComponent} from './patient/patient-symptom/patient-symptom.component';
+import {LabOrderComponent} from './lab/lab-order/lab-order.component';
+import {LabTestComponent} from './lab/lab-test/lab-test.component';
 const routes: Routes = [
   {
     path: 'user',
@@ -23,13 +27,25 @@ const routes: Routes = [
     path: 'userrole',
     component: UserRoleComponent
   },
-  // {
-  //   path: 'role/manage',
-  //   component: ManagUserRoleComponent
-  // },
+  {
+    path: 'listPatient',
+    component: ListPatientComponent
+  },
+  {
+    path: 'patient/symptom',
+    component: PatientSymptomComponent
+  },
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'lab/labOrder',
+    component: LabOrderComponent
+  },
+  {
+    path: 'lab/labTest',
+    component: LabTestComponent
   },
   {
     path: '**', redirectTo: '/user', pathMatch: 'full'

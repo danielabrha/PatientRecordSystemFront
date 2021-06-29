@@ -1,0 +1,75 @@
+<div class="modal-body">
+
+</div>
+<div class="modal-footer">
+    <form [formGroup]="patientForm" (ngSubmit)="patientRegister()">
+        <input type="number" formControlName="id" hidden>
+        <div class="row">
+            <div class=" col-md-3">
+                <label for="fName">First Name<span class="spanStart"style="color: red;">*</span></label>
+                <input type="text" formControlName="fName" class="form-control" id="fName" placeholder="First Name">
+            </div>
+            <div class=" col-md-3">
+                <label for="lName">Last Name<span class="spanStart"style="color: red;">*</span></label>
+                <input type="text" formControlName="lName" class="form-control" id="lName" placeholder="Last Name">
+            </div>
+            <div class=" col-md-3">
+                <label for="mName">Middle Name</label>
+                <input type="text" formControlName="mName" class="form-control" id="mName"
+                    placeholder="Middle Name (Optional)">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <label>Gender<span class="spanStart" style="color: red;">*</span></label>
+                <br>
+                <div class="form-check form-check-inline">
+    
+                    <input class="form-check-input" formControlName="gender" type="radio" name="gender" id="male"
+                        value="Male">
+                    <label class="form-check-label" for="male">Male</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" formControlName="gender" type="radio" name="gender" id="female"
+                        value="Female">
+                    <label class="form-check-label" for="female">Female</label>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="inputAddress">Address<span class="spanStart" style="color: red;">*</span></label>
+                <input type="text" class="form-control" formControlName="address" id="inputAddress"
+                    placeholder="1000 N 4th St">
+            </div>
+    
+        </div>
+    
+    
+        <div class="row">
+            <div class="form-group col-md-3">
+                <label for="datebirth">Date Of Birth<span class="spanStart" style="color: red;">*</span></label>
+                <input type="datetime" formControlName="dateOfBirth" class="form-control" id="datebirth">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="phoneNumber">Phone Number<span class="spanStart" style="color: red;">*</span></label>
+                <input type="text" formControlName="phoneNumber" class="form-control" id="phoneNumber">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="email">Email<span class="spanStart" style="color: red;">*</span></label>
+                <input type="email" formControlName="email" class="form-control" id="email">
+            </div>
+         
+        </div>
+        <div class="row">
+            <div class="col-md-7">
+    
+            </div>
+            <div class="col-md-3">
+                <!-- <button *ngIf="isEdit" type="submit" class="btn btn-primary"
+                    style="margin-left: 10em;margin-top: 1em;">Update</button> -->
+                <button  type="submit" class="btn btn-primary" style="margin-left: 10em;margin-top: 1em;">
+                    Register</button>
+            </div>
+    
+        </div>
+    </form>
+</div>

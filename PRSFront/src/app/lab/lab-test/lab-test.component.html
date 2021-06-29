@@ -1,0 +1,38 @@
+<form [formGroup]="labTestForm" (ngSubmit)="registerLabTest()" style="padding-bottom: 4em;">
+    <input type="number" formControlName="id" hidden>
+    <div class="row">
+        <div class=" col-md-3">
+            <label for="labTestName">Lab Test<span class="spanStart"style="color: red;">*</span></label>
+            <input type="text" formControlName="labTestName" class="form-control" id="labTestName" placeholder="Lab Test Name">
+        </div>
+        <div class=" col-md-3">
+            <label for="labTestCode">Last Test Code<span class="spanStart"style="color: red;">*</span></label>
+            <input type="text" formControlName="labTestCode" class="form-control" id="labTestCode" placeholder="Lab Test Name">
+        </div>
+     
+        <div class=" col-md-1">
+            <button  type="submit" class="btn btn-primary" style="margin-top: 2em;">
+                Save</button>
+        </div>
+    </div>
+</form>
+<table datatable [dtOptions]="dtOptions" class="row-border hover" >
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Lab Test Name</th>
+        <th>Lab Test Code</th>
+        <th >Operations</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let labTest of listLabTest;let i= index">
+        <td>{{ i+1 }}</td>
+        <td>{{ labTest.labTestName }}</td>
+        <td>{{ labTest.labTestCode }}</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
