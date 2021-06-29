@@ -9,6 +9,8 @@ import { ListPatientComponent} from './patient/list-patient/list-patient.compone
 import {PatientSymptomComponent} from './patient/patient-symptom/patient-symptom.component';
 import {LabOrderComponent} from './lab/lab-order/lab-order.component';
 import {LabTestComponent} from './lab/lab-test/lab-test.component';
+import {LabResultListComponent} from './lab/lab-result-list/lab-result-list.component';
+import { LabResultComponent } from './lab/lab-result/lab-result.component';
 const routes: Routes = [
   {
     path: 'user',
@@ -48,7 +50,15 @@ const routes: Routes = [
     component: LabTestComponent
   },
   {
-    path: '**', redirectTo: '/user', pathMatch: 'full'
+    path: 'lab/labResult',
+    component: LabResultListComponent
+  },
+  {
+    path: 'add/lab/labResult',
+    component: LabResultComponent
+  },
+  {
+    path: '**', redirectTo: '/login', pathMatch: 'full'
   }
 ];
 

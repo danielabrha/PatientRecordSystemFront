@@ -1,0 +1,23 @@
+<div>
+    <button class="btn btn-primary" routerLink="/add/lab/labResult"  style="margin-bottom: 4em;">Add New Result</button>
+</div>
+<div>
+    <table datatable [dtOptions]="dtOptions" class="row-border hover" style="padding-top: 4em;">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Patient Name</th>
+                <th>Lab Order</th>
+                <th>Order Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let labResult of listLabResult;let i= index">
+                <td>{{ i+1 }}</td>
+                <td>{{ labResult.pFname}} {{labResult.pLname}}</td>
+                <td>{{ labResult.labOrderName }}</td>
+                <td>{{ labResult.resultName }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
