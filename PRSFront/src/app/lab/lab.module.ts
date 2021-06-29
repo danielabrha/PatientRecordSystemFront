@@ -26,7 +26,8 @@ import { LabResultListComponent } from './lab-result-list/lab-result-list.compon
   exports:[
     LabOrderComponent,
     LabTestComponent,
-    LabResultListComponent
+    LabResultListComponent,
+    LabResultComponent
   ]
 })
 export class LabModule { }

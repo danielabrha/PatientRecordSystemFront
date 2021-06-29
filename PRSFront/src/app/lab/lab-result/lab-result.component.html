@@ -1,1 +1,42 @@
-<p>lab-result works!</p>
+<div class="col-md-3">
+    <label for="inputState">Patient</label>
+    <select id="inputState" [(ngModel)]="selectedpatientId" (change)="onPatientSelect();"
+        class="form-control">
+        <option selected>Choose...</option>
+        <option *ngFor="let patient of listPatient" [value]="patient.id">{{patient.fName}} {{patient.lName}}
+        </option>
+    </select>
+</div>
+<div class="row" style="padding-top: 4em;">
+    <div class="col-md-8">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Lab Test</th>
+                    <th scope="col">Result</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let testTypeOrder of listOrder; let i= index">
+                <tr>
+                    <th scope="row">{{i}}</th>
+                    <td>{{testTypeOrder.labTestName}}</td>
+                    <td><input type="text" [id]="testTypeOrder.labTestId"></td>
+                </tr>
+            </tbody>
+        </table>
+        <div>
+            <button class="btn btn-success" style="float: right;" (click)="submitData();">Submit</button>
+        </div>
+    </div>
+    <!-- <div class="col-md-4" style="padding-top: 2em;padding-left: 4em;">
+        <label> Patient Name |
+            <strong>{{patientName}} | </strong><br>
+            Card Number |
+            <strong>{{cardNumber}} |</strong><br>
+            Birth Date |
+            <strong>{{patientBD}}</strong>
+        </label>
+    </div> -->
+
+</div>

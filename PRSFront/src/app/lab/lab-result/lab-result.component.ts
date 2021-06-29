@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./lab-result.component.css']
 })
 export class LabResultComponent implements OnInit {
-
+  listPatient:any=[];
+  listOrder:any=[];
+  selectedpatientId:Number=0;
   constructor() { }
 
   ngOnInit(): void {
   }
+  onPatientSelect(){
+  }
+  submitData(){
 
+  }
 }
