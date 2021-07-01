@@ -8,12 +8,14 @@ import { Component, OnInit } from '@angular/core';
 export class LabResultComponent implements OnInit {
   listPatient:any=[];
   listOrder:any=[];
+  isSelect:boolean=false;
   selectedpatientId:Number=0;
   constructor() { }
 
   ngOnInit(): void {
   }
   onPatientSelect(){
+    this.isSelect=true;
   }
   submitData(){
 

@@ -1,19 +1,24 @@
 <div *ngIf="isSucessEdit" class="alert alert-warning alert-dismissible fade show" role="alert">
-    <strong>Success Message</strong> You Successfully Deleted.
+    <strong>Success Message</strong> You Successfully Update.
     <button (click)="exitMessage()" type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
-
+<div *ngIf="isSuccessRegister" class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Success Message</strong> You Successfully Register.
+    <button (click)="exitMessage()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
 <form [formGroup]="userForm" (ngSubmit)="userRegister()">
-    <input type="number" formControlName="id" hidden>
+    <input type="number" formControlName="userId" hidden>
     <div class="row">
         <div class=" col-md-3">
-            <label for="fName">First Name<span class="spanStart"style="color: red;">*</span></label>
+            <label for="fName">First Name<span class="spanStart" style="color: red;">*</span></label>
             <input type="text" formControlName="fName" class="form-control" id="fName" placeholder="First Name">
         </div>
         <div class=" col-md-3">
-            <label for="lName">Last Name<span class="spanStart"style="color: red;">*</span></label>
+            <label for="lName">Last Name<span class="spanStart" style="color: red;">*</span></label>
             <input type="text" formControlName="lName" class="form-control" id="lName" placeholder="Last Name">
         </div>
         <div class=" col-md-3">
@@ -50,7 +55,13 @@
     <div class="row">
         <div class="form-group col-md-3">
             <label for="datebirth">Date Of Birth<span class="spanStart" style="color: red;">*</span></label>
-            <input type="datetime" formControlName="dateOfBirth" class="form-control" id="datebirth">
+            <div class="input-group">
+                <input class="form-control"  placeholder="yyyy-mm-dd" name="dp" formControlName="dateOfBirth"  ngbDatepicker
+                    #d="ngbDatepicker">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+                </div>
+            </div>
         </div>
         <div class="form-group col-md-3">
             <label for="phoneNumber">Phone Number<span class="spanStart" style="color: red;">*</span></label>
@@ -60,7 +71,7 @@
             <label for="email">Email<span class="spanStart" style="color: red;">*</span></label>
             <input type="email" formControlName="email" class="form-control" id="email">
         </div>
-     
+
     </div>
     <div class="row">
         <div class="col-md-7">
@@ -77,8 +88,8 @@
 </form>
 
 <div class="row">
-    <div class="col-md-8">
-        <table class="table table-hover">
+    <div class="col-md-12">
+        <table #dataTable   class="display row-border hover">
             <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -90,14 +101,13 @@
                     <th scope="col">Gender</th>
                     <th scope="col">Address</th>
                     <th scope="col">Zip</th>
-                    <th colspan="2">Operations</th>
+                    <th>Operations</th>
                 </tr>
             </thead>
 
             <tbody *ngFor="let user of listuser;let i = index">
                 <tr>
                     <th scope="row">{{i}}</th>
-
                     <td>{{user.fName}}</td>
                     <td>{{user.lName}}</td>
                     <td>{{user.mName}}</td>
@@ -105,6 +115,10 @@
                     <td>{{user.gender}}</td>
                     <td>{{user.address}}</td>
                     <td>{{user.zip}}</td>
+                    <td> <i (click)="editUser(user.userId);" 
+                        style="font-size:24px; color: blue;" class="fa fa-edit"> </i></td> 
+                        <td> <i (click)="deleteUser(modalData,user.userId)" style="font-size:24px; color: red;" class="fa fa-trash"></i>
+                        </td>
                     <!-- <td> <i (click)="deleteResto(item.id)" style="font-size:24px; color: red;" class="fa fa-trash"></i>
                     </td>
                     <td> <i routerLink="/update/{{item.id}}" style="font-size:24px;color: blue;" class="fa fa-edit"></i>
@@ -119,28 +133,23 @@
     </div>
 </div>
 
-<!-- <button class="btn btn-danger" (click)="triggerModal(modalData)">Open Modal</button> -->
-
-<!-- <ng-template #modalData let-modal>
+<ng-template #modalData let-modal>
     <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">Angular Bootstrap Modal Popup</h4>
+      <h4 class="modal-title" id="modal-basic-title">Delete User </h4>
       <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
         <span aria-hidden="true">×</span>
       </button>
     </div>
     <div class="modal-body">
       <p><strong>Are you sure you want to delete
-         <span class="text-primary">{{user.fName}} {{user.lName}} with </span>ID: {{user.id}}</strong></p>
-       -->
-<!-- <p>All data related to west view profile will be removed permanently.
+         <span class="text-primary">{{user.fName}} {{user.lName}}  </span></strong></p>
+      
+      <p>All data related to west view profile will be removed permanently.
       </p>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-danger" (click)="confirmeDelete(user.id)">Delete</button>
+      <button type="button" class="btn btn-danger" (click)="confirmeDelete(user.userId)">Delete</button>
       <button type="button" class="btn btn-danger" (click)="modal.close('Save click')">Close</button>
     </div>
   </ng-template>
-  
-  <app-footer></app-footer>
-   -->
 <app-footer></app-footer>

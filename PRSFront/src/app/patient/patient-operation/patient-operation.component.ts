@@ -7,9 +7,10 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class PatientOperationComponent implements OnInit {
   @Output() patient:EventEmitter<any> =new EventEmitter();
+  @Input() isForEdit:boolean=false;
   patientForm = new FormGroup({
     fName: new FormControl(''),
-    id: new FormControl(''),
+    patientId: new FormControl(''),
     lName: new FormControl(''),
     mName: new FormControl(''),
     gender: new FormControl(''),

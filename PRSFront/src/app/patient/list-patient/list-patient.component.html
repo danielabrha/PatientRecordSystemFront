@@ -1,3 +1,16 @@
+<div *ngIf="isSucessEdit" class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Success Message</strong> You Successfully Update.
+  <button (click)="exitMessage()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div *ngIf="isSuccessRegister" class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Success Message</strong> You Successfully Register.
+  <button (click)="exitMessage()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
 <ng-template #modalData let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Patient Case Registratiom Form</h4>
@@ -5,7 +18,7 @@
       <span aria-hidden="true">×</span>
     </button>
   </div>
-  <app-patient-operation (patient)="savePatient($event)">
+  <app-patient-operation [isForEdit]="isForEdit"  (patient)="savePatient($event)">
 
   </app-patient-operation>
 </ng-template>
@@ -35,10 +48,116 @@
       <td>{{ patient.mName }}</td>
       <td>{{ patient.dateOfBirth }}</td>
       <td>{{ patient.gender }}</td>
-      <td>{{ patient.patientcardNumber }}</td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>{{ patient.cardRecordNumber }}</td>
+      <td> <i (click)="editPatient(modalDataEdit,patient.patientId);" 
+        style="font-size:24px; color: blue;" class="fa fa-edit"> </i></td> 
+        <td> <i (click)="deletePatient(modalDataDelete,patient.patientId)" 
+          style="font-size:24px; color: red;" class="fa fa-trash"></i>
+        </td>
     </tr>
   </tbody>
 </table>
+<ng-template #modalDataDelete let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Delete Patient </h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p><strong>Are you sure you want to delete
+       <span class="text-primary">{{patient.fName}} {{patient.lName}} with  {{patient.cardRecordNumber}} </span></strong></p>
+    
+    <p>All data related to west view profile will be removed permanently.
+    </p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="confirmeDelete(patient.patientId)">Delete</button>
+    <button type="button" class="btn btn-default" (click)="modal.close('Save click')">Close</button>
+  </div>
+</ng-template>
+<ng-template #modalDataEdit let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Patient Case Registratiom Form</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+<form [formGroup]="patientForm" (ngSubmit)="patientUpdate()">
+  <div class="modal-body">
+      <input type="number" formControlName="id" hidden>
+      <div class="row">
+          <div class=" col-md-3">
+              <label for="fName">First Name<span class="spanStart" style="color: red;">*</span></label>
+              <input type="text" formControlName="fName" class="form-control" id="fName" placeholder="First Name">
+          </div>
+          <div class=" col-md-3">
+              <label for="lName">Last Name<span class="spanStart" style="color: red;">*</span></label>
+              <input type="text" formControlName="lName" class="form-control" id="lName" placeholder="Last Name">
+          </div>
+          <div class=" col-md-5">
+              <label for="mName">Middle Name</label>
+              <input type="text" formControlName="mName" class="form-control" id="mName"
+                  placeholder="Middle Name (Optional)">
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-md-3">
+              <label>Gender<span class="spanStart" style="color: red;">*</span></label>
+              <br>
+              <div class="form-check form-check-inline">
+
+                  <input class="form-check-input" formControlName="gender" type="radio" name="gender" id="male"
+                      value="Male">
+                  <label class="form-check-label" for="male">Male</label>
+              </div>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" formControlName="gender" type="radio" name="gender" id="female"
+                      value="Female">
+                  <label class="form-check-label" for="female">Female</label>
+              </div>
+          </div>
+          <div class="col-md-6">
+              <label for="inputAddress">Address<span class="spanStart" style="color: red;">*</span></label>
+              <input type="text" class="form-control" formControlName="address" id="inputAddress"
+                  placeholder="1000 N 4th St">
+          </div>
+
+      </div>
+
+
+      <div class="row">
+          <div class="form-group col-md-3">
+              <label for="datebirth">Date Of Birth<span class="spanStart" style="color: red;">*</span></label>
+              <input type="datetime" formControlName="dateOfBirth" class="form-control" id="datebirth">
+          </div>
+          <div class="form-group col-md-3">
+              <label for="phoneNumber">Phone Number<span class="spanStart" style="color: red;">*</span></label>
+              <input type="text" formControlName="phoneNumber" class="form-control" id="phoneNumber">
+          </div>
+          <div class="form-group col-md-5">
+              <label for="email">Email<span class="spanStart" style="color: red;">*</span></label>
+              <input type="email" formControlName="email" class="form-control" id="email">
+          </div>
+
+      </div>
+  </div>
+  <div class="modal-footer">
+
+
+      <div class="row">
+          <div class="col-md-7">
+
+          </div>
+          <div class="col-md-3">
+              <button  type="submit" class="btn btn-primary"
+                  style="margin-left: -4em;margin-top: 1em;">Update</button>
+             
+          </div>
+
+      </div>
+
+  </div>
+</form>
+</ng-template>
+<!-- <app-footer></app-footer> -->

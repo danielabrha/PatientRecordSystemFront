@@ -1,0 +1,39 @@
+<form [formGroup]="drugForm" (submit)="registerDrug()" style="padding-bottom: 4em;">
+    <input type="number" formControlName="id" hidden>
+    <div class="row">
+        <div class=" col-md-3">
+            <label for="drugName">Drug Name<span class="spanStart"style="color: red;">*</span></label>
+            <input type="text" formControlName="drugName" class="form-control" id="drugName" placeholder="Drug Name">
+        </div>
+        <div class=" col-md-3">
+            <label for="drugCode">Drug Code<span class="spanStart"style="color: red;">*</span></label>
+            <input type="text" formControlName="drugCode" class="form-control" id="drugCode" placeholder="Drug Code">
+        </div>
+     
+        <div class=" col-md-1">
+            <button  type="submit" class="btn btn-primary" style="margin-top: 2em;">
+                Save</button>
+        </div>
+    </div>
+</form>
+<table datatable [dtOptions]="dtOptions" class="row-border hover" >
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Lab Test Name</th>
+        <th>Lab Test Code</th>
+        <th >Operations</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let drug of listDrug;let i= index">
+        <td>{{ i+1 }}</td>
+        <td>{{ drug.drugName }}</td>
+        <td>{{ drug.drugCode }}</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  

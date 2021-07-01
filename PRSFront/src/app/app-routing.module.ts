@@ -11,6 +11,7 @@ import {LabOrderComponent} from './lab/lab-order/lab-order.component';
 import {LabTestComponent} from './lab/lab-test/lab-test.component';
 import {LabResultListComponent} from './lab/lab-result-list/lab-result-list.component';
 import { LabResultComponent } from './lab/lab-result/lab-result.component';
+import {DrugComponent} from './medical/drug/drug.component'
 const routes: Routes = [
   {
     path: 'user',
@@ -56,6 +57,10 @@ const routes: Routes = [
   {
     path: 'add/lab/labResult',
     component: LabResultComponent
+  },
+  {
+    path: 'drug',
+    component: DrugComponent
   },
   {
     path: '**', redirectTo: '/login', pathMatch: 'full'
