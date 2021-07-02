@@ -3,8 +3,9 @@ import { CommonModule } from '@angular/common';
 import {DataTablesModule} from 'angular-datatables';
 import { ListPatientComponent } from './list-patient/list-patient.component';
 import { PatientOperationComponent } from './patient-operation/patient-operation.component';
-import{ ReactiveFormsModule} from '@angular/forms';
-import { PatientSymptomComponent } from './patient-symptom/patient-symptom.component'
+import{ ReactiveFormsModule,FormsModule} from '@angular/forms';
+import { PatientSymptomComponent } from './patient-symptom/patient-symptom.component';
+import { VisitComponent } from './visit/visit.component'
 
 
 
@@ -12,17 +13,20 @@ import { PatientSymptomComponent } from './patient-symptom/patient-symptom.compo
   declarations: [
     ListPatientComponent,
     PatientOperationComponent,
-    PatientSymptomComponent
+    PatientSymptomComponent,
+    VisitComponent
   ],
   imports: [
     CommonModule,
     DataTablesModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   exports:[
     ListPatientComponent,
     PatientOperationComponent,
-    PatientSymptomComponent
+    PatientSymptomComponent,
+    VisitComponent
   ]
 })
 export class PatientModule { }

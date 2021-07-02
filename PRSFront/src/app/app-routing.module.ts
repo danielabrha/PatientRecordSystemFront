@@ -11,7 +11,8 @@ import {LabOrderComponent} from './lab/lab-order/lab-order.component';
 import {LabTestComponent} from './lab/lab-test/lab-test.component';
 import {LabResultListComponent} from './lab/lab-result-list/lab-result-list.component';
 import { LabResultComponent } from './lab/lab-result/lab-result.component';
-import {DrugComponent} from './medical/drug/drug.component'
+import {DrugComponent} from './medical/drug/drug.component';
+import {VisitComponent} from './patient/visit/visit.component';
 const routes: Routes = [
   {
     path: 'user',
@@ -37,6 +38,10 @@ const routes: Routes = [
   {
     path: 'patient/symptom',
     component: PatientSymptomComponent
+  },
+  {
+    path: 'patient/visit',
+    component: VisitComponent
   },
   {
     path: 'login',

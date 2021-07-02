@@ -41,7 +41,9 @@ export class LabOrderComponent implements OnInit {
   onSelectAll(items: any) {
     console.log(items);
   }
-  onPatientSelect() {}
+  onPatientSelect() {
+    
+  }
   saveLabOrder(){
 
   }

@@ -1,5 +1,17 @@
-<form [formGroup]="labTestForm" (ngSubmit)="registerLabTest()" style="padding-bottom: 4em;">
-    <input type="number" formControlName="id" hidden>
+<div *ngIf="isSucessEdit" class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Success Message</strong> You Successfully Edited.
+  <button (click)="exitMessage()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div *ngIf="isSuccessRegister" class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Success Message</strong> You Successfully Registered.
+  <button (click)="exitMessage()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<form [formGroup]="labTestForm" (ngSubmit)="registerLabTestType()" style="padding-bottom: 4em;">
+    <input type="number" formControlName="labTestId" hidden>
     <div class="row">
         <div class=" col-md-3">
             <label for="labTestName">Lab Test<span class="spanStart"style="color: red;">*</span></label>
@@ -10,10 +22,12 @@
             <input type="text" formControlName="labTestCode" class="form-control" id="labTestCode" placeholder="Lab Test Name">
         </div>
      
-        <div class=" col-md-1">
-            <button  type="submit" class="btn btn-primary" style="margin-top: 2em;">
-                Save</button>
-        </div>
+        <div class="col-md-3" style="padding-top: 1em;">
+          <button *ngIf="isEdit" type="submit" class="btn btn-primary"
+              style="margin-left: 10em;margin-top: 1em;">Update</button>
+          <button *ngIf="!isEdit" type="submit" class="btn btn-primary" style="margin-left: 10em;margin-top: 1em;">
+              Register</button>
+      </div>
     </div>
 </form>
 <table datatable [dtOptions]="dtOptions" class="row-border hover" >
@@ -30,9 +44,30 @@
         <td>{{ i+1 }}</td>
         <td>{{ labTest.labTestName }}</td>
         <td>{{ labTest.labTestCode }}</td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td> <i (click)="editLabTestType(labTest.labTestId);" 
+          style="font-size:24px; color: blue;padding-left: 4em;" class="fa fa-edit"> </i>
+           <i (click)="deleteLabTestType(modalDataDelete,labTest.labTestId)" 
+            style="font-size:24px; color: red;padding-left: 1em;" class="fa fa-trash"></i>
+          </td>
       </tr>
     </tbody>
   </table>
+  <ng-template #modalDataDelete let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Delete Lab Test Type </h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p><strong>Are you sure you want to delete
+         <span class="text-primary">{{labTestType.labTestName}} {{labTestType.labTestCode}}  </span></strong></p>
+      
+      <p>All data related to west view profile will be removed permanently.
+      </p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" (click)="confirmeDelete(labTestType.labTestId)">Delete</button>
+      <button type="button" class="btn btn-default" (click)="modal.close('Save click')">Close</button>
+    </div>
+  </ng-template>

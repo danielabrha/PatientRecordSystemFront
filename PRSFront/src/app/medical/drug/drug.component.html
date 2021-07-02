@@ -1,3 +1,15 @@
+<div *ngIf="isSucessEdit" class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Success Message</strong> You Successfully Edited.
+  <button (click)="exitMessage()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div *ngIf="isSuccessRegister" class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Success Message</strong> You Successfully Registered.
+  <button (click)="exitMessage()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+  </button>
+</div>
 <form [formGroup]="drugForm" (submit)="registerDrug()" style="padding-bottom: 4em;">
     <input type="number" formControlName="id" hidden>
     <div class="row">
@@ -16,6 +28,7 @@
         </div>
     </div>
 </form>
+<hr style="margin-bottom: 4em;">
 <table datatable [dtOptions]="dtOptions" class="row-border hover" >
     <thead>
       <tr>
@@ -30,10 +43,30 @@
         <td>{{ i+1 }}</td>
         <td>{{ drug.drugName }}</td>
         <td>{{ drug.drugCode }}</td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td> <i (click)="editDrug(drug.drugId);" 
+          style="font-size:24px; color: blue;padding-left: 4em;" class="fa fa-edit"> </i>
+           <i (click)="deleteDrug(modalDataDelete,drug.drugId)" 
+            style="font-size:24px; color: red;padding-left: 1em;" class="fa fa-trash"></i>
+          </td>
       </tr>
     </tbody>
   </table>
-  
+  <ng-template #modalDataDelete let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Delete Drug </h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p><strong>Are you sure you want to delete
+         <span class="text-primary">{{drug.drugName}} {{drug.drugCode}}  </span></strong></p>
+      
+      <p>All data related to west view profile will be removed permanently.
+      </p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" (click)="confirmeDelete(drug.drugId)">Delete</button>
+      <button type="button" class="btn btn-default" (click)="modal.close('Save click')">Close</button>
+    </div>
+  </ng-template>

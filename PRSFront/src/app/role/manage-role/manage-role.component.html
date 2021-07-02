@@ -4,12 +4,17 @@
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
-
+<div *ngIf="isSuccessRegister" class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Success Message</strong> You Successfully Registered.
+    <button (click)="exitMessage()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
 <form [formGroup]="roleForm" (ngSubmit)="roleRegister()" style="padding-bottom: 2em;">
-    <input type="number" formControlName="id" hidden>
+    <input type="number" formControlName="roleId" hidden>
     <div class="row">
         <div class=" col-md-3">
-            <label for="roleName">Role Name<span class="spanStart"style="color: red;">*</span></label>
+            <label for="roleName">Role Name<span class="spanStart" style="color: red;">*</span></label>
             <input type="text" formControlName="roleName" class="form-control" id="roleName" placeholder="First Name">
         </div>
         <div class="col-md-3" style="padding-top: 1em;">
@@ -20,36 +25,47 @@
         </div>
     </div>
 </form>
+<hr style="margin-bottom: 4em;">
 
-<div class="row">
-    <div class="col-md-8">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Role Name</th>
+<table datatable [dtOptions]="dtOptions" class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Role Name</th>
+            <th>Operations</th>
+        </tr>
+    </thead>
 
-                    
-                    <th colspan="2">Operations</th>
-                </tr>
-            </thead>
+    <tbody *ngFor="let role of listRole;let i = index">
+        <tr>
+            <th scope="row">{{i+1}}</th>
 
-            <tbody *ngFor="let role of listRole;let i = index">
-                <tr>
-                    <th scope="row">{{i+1}}</th>
+            <td>{{role.roleName}}</td>
 
-                    <td>{{role.roleName}}</td>
-                    
-                    <!-- <td> <i (click)="deleteResto(item.id)" style="font-size:24px; color: red;" class="fa fa-trash"></i>
-                    </td>
-                    <td> <i routerLink="/update/{{item.id}}" style="font-size:24px;color: blue;" class="fa fa-edit"></i>
-                    </td>
-                    <td> <i (click)="deleteUserModal(modalData,user.id);" style="font-size:24px; color: red;"
-                            class="fa fa-trash"></i></td>
-                    <td> <i (click)="editUser(user.id);" style="font-size:24px;color: blue;" class="fa fa-edit"></i>
-                    </td> -->
-                </tr>
-            </tbody>
-        </table>
+            <td> <i (click)="editRole(role.roleId);" 
+                style="font-size:24px; color: blue;padding-left: 4em;" class="fa fa-edit"> </i>
+                 <i (click)="deleteRole(modalDataDelete,role.roleId)" 
+                  style="font-size:24px; color: red;padding-left: 1em;" class="fa fa-trash"></i>
+                </td>
+        </tr>
+    </tbody>
+</table>
+<ng-template #modalDataDelete let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Delete Patient </h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">×</span>
+      </button>
     </div>
-</div>
+    <div class="modal-body">
+      <p><strong>Are you sure you want to delete
+         <span class="text-primary">{{role.roleName}}  </span></strong></p>
+      
+      <p>All data related to west view profile will be removed permanently.
+      </p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" (click)="confirmeDelete(role.roleId)">Delete</button>
+      <button type="button" class="btn btn-default" (click)="modal.close('Save click')">Close</button>
+    </div>
+  </ng-template>
