@@ -29,14 +29,16 @@
             <th>First Name</th>
             <th>Last Name</th>
             <th>Card Number</th>
+            <th>visited Date</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let patient of listPatient;let i= index">
+        <tr *ngFor="let visit of listVisit;let i= index">
             <td>{{ i+1 }}</td>
-            <td>{{ patient.fName }}</td>
-            <td>{{ patient.lName }}</td>
-            <td>{{ patient.cardRecordNumber }}</td>
+            <td>{{ visit.patient.fName }}</td>
+            <td>{{ visit.patient.lName }}</td>
+            <td>{{ visit.patient.cardRecordNumber }}</td>
+            <td>{{ visit.visitDate }}</td>
         </tr>
     </tbody>
 </table>

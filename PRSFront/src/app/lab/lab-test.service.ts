@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -7,6 +7,7 @@ import { Injectable } from '@angular/core';
 export class LabTestService {
 
   constructor(private http: HttpClient) { }
+ 
   urlPost1 = "http://localhost:8989/LabTestType/post/data";
   urlPostAll = "http://localhost:8989/LabTestType/post/All/data";
   urlget1 = "http://localhost:8989/LabTestType/get/data";
@@ -19,7 +20,9 @@ export class LabTestService {
   // LabTestType operation
   LabTestTypeRegistration(LabTestTypeData: any) {
     console.log(LabTestTypeData);
-    return this.http.post(`${this.urlPost1}/${1}`, LabTestTypeData);
+    // let _=1;
+    // let xx = {headers: new HttpHeaders({'Content-Type':  'application/json' })};
+   return this.http.post(this.urlPost1, LabTestTypeData);
   }
   // get All LabTestType
   getAllLabTestType() {

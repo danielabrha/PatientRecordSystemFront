@@ -13,6 +13,8 @@ import {LabResultListComponent} from './lab/lab-result-list/lab-result-list.comp
 import { LabResultComponent } from './lab/lab-result/lab-result.component';
 import {DrugComponent} from './medical/drug/drug.component';
 import {VisitComponent} from './patient/visit/visit.component';
+import {DrugOrderListComponent} from './medical/drug-order-list/drug-order-list.component';
+import { OrderDrugComponent } from './medical/order-drug/order-drug.component';
 const routes: Routes = [
   {
     path: 'user',
@@ -32,7 +34,7 @@ const routes: Routes = [
     component: UserRoleComponent
   },
   {
-    path: 'listPatient',
+    path: 'Patient/list',
     component: ListPatientComponent
   },
   {
@@ -66,6 +68,14 @@ const routes: Routes = [
   {
     path: 'drug',
     component: DrugComponent
+  },
+  {
+    path: 'drug/order/list',
+    component: DrugOrderListComponent
+  },
+  {
+    path: 'patient/drug/order',
+    component: OrderDrugComponent
   },
   {
     path: '**', redirectTo: '/login', pathMatch: 'full'

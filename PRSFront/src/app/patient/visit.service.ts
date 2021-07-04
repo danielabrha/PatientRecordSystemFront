@@ -19,8 +19,7 @@ export class VisitService {
   VisitRegistration(VisitData: any) {
     console.log(VisitData);
     let x={};
-    let _=1;
-    return this.http.post(`${this.urlPost1}/${_}/${VisitData}`, x);
+    return this.http.post(`${this.urlPost1}/${VisitData}`, x);
   }
   // get All Visit
   getAllVisit() {

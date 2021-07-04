@@ -1,1 +1,25 @@
-<p>drug-order-list works!</p>
+<div>
+    <button class="btn btn-primary" routerLink="/patient/drug/order"  style="margin-bottom: 4em;">Add New Result</button>
+</div>
+<div>
+    <table datatable [dtOptions]="dtOptions" class="row-border hover" style="padding-top: 4em;">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Patient Name</th>
+                <th>Drug Name</th>
+                <th>Drug Code</th>
+                <th>Order Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let labResult of listDrugOrder;let i= index">
+                <td>{{ i+1 }}</td>
+                <td>{{ labResult.labOrder.visit.patient.fName}}  {{labResult.labOrder.visit.patient.lName}}</td>
+                <td>{{ labResult.labOrder.labTestType.labTestName }}</td>
+                <td>{{ labResult.labResultName  }}</td>
+                <td>{{ labResult.labOrder.visit.visitDate }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,34 +1,80 @@
 <div class="row">
-    <div class="form-group col-md-4">
-      <label for="inputState">Patient</label>
-      <!-- <select id="inputState" [(ngModel)]="selectedpatientId" (change)="onPatientSelect();" class="form-control"> -->
+  <div class="form-group col-md-4">
+    <label for="inputState">Patient</label>
+    <!-- <select id="inputState" [(ngModel)]="selectedpatientId" (change)="onPatientSelect();" class="form-control"> -->
+
+    <select id="inputState" [(ngModel)]="selectedpatientId" (change)="onPatientSelect();" class="form-control">
+      <option selected>Choose...</option>
+      <option *ngFor="let visit of listVisit" [value]="visit.visitId">
+        {{visit.patient.fName}} {{visit.patient.lName}} | {{ visit.visitDate}}</option>
+    </select>
+  </div>
+  <div class="form-group col-md-4">
+    <label for="inputZip">Symptom</label>
+    <input type="text" [(ngModel)]="symptom" class="form-control" id="symptom">
+    <!-- <input type="text" class="form-control" id="inputZip"> -->
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <button class="btn btn-primary" (click)="saveSymptom()">
+      Add
+    </button>
+  </div>
+</div>
+<div class="row">
+  <div class="form-group col-md-5" style="padding-top: 2em;">
+    <div *ngIf="isVisitSelected">
+      <label><strong>Patient </strong>| {{selectedSingleVisit.patient.fName}}
+        {{ selectedSingleVisit.patient.lName }} | {{ selectedSingleVisit.patient.cardRecordNumber }}</label>
+      <div>
+        <ul>
+          <li *ngFor="let sym of listSymptomOfSelectedPatient">{{sym}}</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="row" *ngIf="isVisitSelected">
+  <div class="col-md-5"></div>
+  <div class="col-md-5">
+    <table  class="table row-border hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Symptom</th>
+          <th colspan="2">Operations</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let symptom of listSymptomGivenVisit;let i= index">
+          <td>{{i}}</td>
+          <td>{{symptom.symptomName}}</td>
+          <td>
+             <i (click)="editSymptom(symptom.symptomId);"
+             style="font-size:24px; color: blue;" 
+             class="fa fa-edit"> </i>
+          </td>
+          <td> 
+            <i (click)="deleteSymptom(symptom.symptomId)" 
+            style="font-size:24px; color: red;" 
+            class="fa fa-trash">
+          </i>
+          </td>
+        </tr>
        
-      <select id="inputState"  (change)="onPatientSelect();" class="form-control">
-        <option selected>Choose...</option>
-        <option *ngFor="let patient of listPatient" [value]="patient.id">{{patient.fName}} {{patient.lName}}</option>
-      </select>
-    </div>
-    <div class="form-group col-md-4">
-      <label for="inputZip">Symptom</label>
-      <!-- <input type="text" [(ngModel)]="symptom" class="form-control" id="inputZip"> -->
-      <input type="text" class="form-control" id="inputZip">
-    </div>
-    <div class="form-group col-md-6" style="padding-top: 2em;">
-      <div *ngIf="selectedPatient" style="float: right;">
-        <label><strong>Patient </strong>| {{selectedPatient}}</label>
-        <div>
-          <ul>
-            <li *ngFor="let sym of listSymptomOfSelectedPatient">{{sym}}</li>
-          </ul>
-        </div>
-        
-        </div>
-    </div>
-   
+      </tbody>
+    </table>
   </div>
-  <div style="padding-top: 3em;">
-    <!-- <input type="button" (click)="saveSymptom(false);" class="btn btn-primary" value="Save & Continue">|
+</div>
+
+<div style="padding-top: 3em;">
+  <!-- <input type="button" (click)="saveSymptom(false);" class="btn btn-primary" value="Save & Continue">|
     <input type="button" [routerLink]="['/laborder',selectedpatientId]" class="btn btn-primary" value="Save & exit"> -->
-  
-  </div>
-  <!-- <app-footer></app-footer> -->
+
+</div>
+
+<!-- <app-footer></app-footer> -->

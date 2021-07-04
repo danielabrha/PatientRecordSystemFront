@@ -42,7 +42,8 @@ export class LabTestComponent implements OnInit {
         this.labTestForm.reset();
       })
     }else{
-      this._labTestTypeService.LabTestTypeRegistration(this.labTestForm.value).subscribe(res=>{
+      this._labTestTypeService.LabTestTypeRegistration(this.labTestForm.value)
+      .subscribe(res=>{
         this.getAllLabTestType();
         this.isSuccessRegister=true;
         this.labTestForm.reset();
@@ -94,6 +95,7 @@ export class LabTestComponent implements OnInit {
     getAllLabTestType(){
       this._labTestTypeService.getAllLabTestType().subscribe(res=>{
         this.labTestType=res;
+        console.log("list Lab Test Type",res);
       })
     }
     exitMessage(){

@@ -24,7 +24,8 @@ export class DrugComponent implements OnInit {
     drugCode: new FormControl(0),
     id: new FormControl(0)
   });
-  constructor(private _drugService:DrugService, private modalService: NgbModal) { }
+  constructor(private _drugService:DrugService,
+     private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.dtOptions = {

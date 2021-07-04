@@ -8,15 +8,17 @@
                 <th>#</th>
                 <th>Patient Name</th>
                 <th>Lab Order</th>
+                <th>Lab Result</th>
                 <th>Order Date</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let labResult of listLabResult;let i= index">
                 <td>{{ i+1 }}</td>
-                <td>{{ labResult.pFname}} {{labResult.pLname}}</td>
-                <td>{{ labResult.labOrderName }}</td>
-                <td>{{ labResult.resultName }}</td>
+                <td>{{ labResult.labOrder.visit.patient.fName}}  {{labResult.labOrder.visit.patient.lName}}</td>
+                <td>{{ labResult.labOrder.labTestType.labTestName }}</td>
+                <td>{{ labResult.labResultName  }}</td>
+                <td>{{ labResult.labOrder.visit.visitDate }}</td>
             </tr>
         </tbody>
     </table>

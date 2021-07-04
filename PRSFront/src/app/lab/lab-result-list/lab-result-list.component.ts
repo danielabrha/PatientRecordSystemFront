@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LabResultService } from '../lab-result.service';
 
 @Component({
   selector: 'app-lab-result-list',
@@ -10,7 +11,7 @@ export class LabResultListComponent implements OnInit {
  title = 'datatables';
  dtOptions: DataTables.Settings = {};
  listLabResult:any=[];
-  constructor() { }
+  constructor(private labResultService:LabResultService) { }
 
   ngOnInit(): void {
     this.dtOptions = {
@@ -18,6 +19,12 @@ export class LabResultListComponent implements OnInit {
       pageLength: 5,
       processing: true
     };
+    this.getAllLabResult();
   }
-
+getAllLabResult(){
+  this.labResultService.getAllLabResult().subscribe(res=>{
+    this.listLabResult=res;
+    console.log("the result is",res);
+  })
+}
 }

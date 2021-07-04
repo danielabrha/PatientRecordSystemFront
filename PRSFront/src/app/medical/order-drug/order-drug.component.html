@@ -1,1 +1,43 @@
-<p>order-drug works!</p>
+<div style="margin-bottom: 2em;">
+
+    <div class="row">
+        <div class="col-md-3">
+            <label for="inputState">Patient</label>
+            <select id="inputState" [(ngModel)]="selectedpatientId" (change)="onPatientSelect();" class="form-control">
+                <option selected>Choose...</option>
+                <option *ngFor="let visit of listPatient" [value]="visit.visitId">{{visit.patient.fName}}
+                    {{visit.patient.lName}} | {{visit.visitDate}}
+                </option>
+            </select>
+        </div>
+        <div class="col-md-1">
+            <label style="padding-top: -2;">Drug</label>
+        </div>
+        <div class="col-md-5" style="margin-left:-2em;">
+          
+            <select id="labCase" [(ngModel)]="selectedDrug" multiple>
+                <option selected *ngFor="let drug of listDrug" [value]="drug.drugId">
+                    {{drug.drugName}}</option>
+            </select>
+            <!-- <ng-multiselect-dropdown [placeholder]="'Select Lab Test'" [settings]="dropdownSettings"
+                    [data]="listDrug" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
+                </ng-multiselect-dropdown> -->
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="amount">Amount</label>
+                <input type="number" class="form-control" id="amount" [(ngModel)]="amount" >
+            </div>
+          
+        </div>
+        <div class="row">
+            <div class="col-md-7"></div>
+            <div class="col-md-1">
+                <button style="float: right;margin-top: 1em;" class="btn btn-primary"
+                    (click)="saveDrugOrder()">Save</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+

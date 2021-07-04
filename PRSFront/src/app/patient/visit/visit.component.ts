@@ -39,7 +39,7 @@ export class VisitComponent implements OnInit {
   visitIt() {
     console.log(this.selectedpatientId);
     this._visitService.VisitRegistration(this.selectedpatientId).subscribe(res=>{
-      console.log(res);
+     this.getAllVisit();
     })
   }
   exitMessage() {

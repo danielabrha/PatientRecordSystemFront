@@ -3,7 +3,8 @@
     <select id="inputState" [(ngModel)]="selectedpatientId" (change)="onPatientSelect();"
         class="form-control">
         <option selected>Choose...</option>
-        <option *ngFor="let patient of listPatient" [value]="patient.id">{{patient.fName}} {{patient.lName}}
+        <option *ngFor="let visit of listPatientVisit" [value]="visit.visitId">{{visit.patient.fName}} 
+            {{visit.patient.lName}} | {{visit.visitDate}}
         </option>
     </select>
 </div>
@@ -17,11 +18,11 @@
                     <th scope="col">Result</th>
                 </tr>
             </thead>
-            <tbody *ngFor="let testTypeOrder of listOrder; let i= index">
+            <tbody *ngFor="let testTypeOrder of listOfSelectedOrder; let i= index">
                 <tr>
                     <th scope="row">{{i}}</th>
-                    <td>{{testTypeOrder.labTestName}}</td>
-                    <td><input type="text" [id]="testTypeOrder.labTestId"></td>
+                    <td>{{testTypeOrder.labTestType.labTestName}}</td>
+                    <td><input type="text" [id]="testTypeOrder.labOrderId"></td>
                 </tr>
             </tbody>
         </table>

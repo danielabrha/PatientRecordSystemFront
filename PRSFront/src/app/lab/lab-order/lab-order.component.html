@@ -1,28 +1,34 @@
 <div style="margin-bottom: 2em;">
-    <form (submit)="saveLabOrder()">
+
+    <div class="row">
+        <div class="col-md-3">
+            <label for="inputState">Patient</label>
+            <select id="inputState" [(ngModel)]="selectedpatientId" (change)="onPatientSelect();" class="form-control">
+                <option selected>Choose...</option>
+                <option *ngFor="let visit of listPatient" [value]="visit.visitId">{{visit.patient.fName}}
+                    {{visit.patient.lName}} | {{visit.visitDate}}
+                </option>
+            </select>
+        </div>
+        <div class="col-md-5" style="margin-top: 2em;">
+            <label style="padding-top: -2;">Lab Test Type</label>
+            <select id="labCase" [(ngModel)]="selectedLabTestType" multiple>
+                <option selected *ngFor="let labTestType of listLabTestType" [value]="labTestType.labTestTypeId">
+                    {{labTestType.labTestName}}</option>
+            </select>
+            <!-- <ng-multiselect-dropdown [placeholder]="'Select Lab Test'" [settings]="dropdownSettings"
+                    [data]="listLabTestType" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
+                </ng-multiselect-dropdown> -->
+        </div>
         <div class="row">
-            <div class="col-md-3">
-                <label for="inputState">Patient</label>
-                <select id="inputState" [(ngModel)]="selectedpatientId" (change)="onPatientSelect();"
-                    class="form-control">
-                    <option selected>Choose...</option>
-                    <option *ngFor="let patient of listPatient" [value]="patient.id">{{patient.fName}} {{patient.lName}}
-                    </option>
-                </select>
-            </div>
-            <div class="col-md-5" style="margin-top: 2em;">
-                <ng-multiselect-dropdown [placeholder]="'Select Lab Test'" [settings]="dropdownSettings"
-                    [data]="dropdownList" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
-                </ng-multiselect-dropdown>
-            </div>
-            <div class="row">
-                <div class="col-md-7"></div>
-                <div class="col-md-1">
-                    <button style="float: right;margin-top: 1em;" class="btn btn-primary">Save</button>
-                </div>
+            <div class="col-md-7"></div>
+            <div class="col-md-1">
+                <button style="float: right;margin-top: 1em;" class="btn btn-primary"
+                    (click)="saveLabOrder()">Save</button>
             </div>
         </div>
-    </form>
+    </div>
+
 </div>
 
 
@@ -39,9 +45,9 @@
         <tbody>
             <tr *ngFor="let labOrder of listLabOrder;let i= index">
                 <td>{{ i+1 }}</td>
-                <td>{{ labOrder.pFname}} {{listLabOrder}}</td>
-                <td>{{ labOrder.labOrderName }}</td>
-                <td>{{ labOrder.dateRegistered }}</td>
+                <td>{{ labOrder.visit.patient.fName}} {{labOrder.visit.patient.lName}}</td>
+                <td>{{ labOrder.labTestType.labTestName }}</td>
+                <td>{{ labOrder.labTestType.visitDate }}</td>
             </tr>
         </tbody>
     </table>

@@ -42,6 +42,7 @@
     <tbody>
       <tr *ngFor="let labTest of listLabTest;let i= index">
         <td>{{ i+1 }}</td>
+        <td>{{labTest}}</td>
         <td>{{ labTest.labTestName }}</td>
         <td>{{ labTest.labTestCode }}</td>
         <td> <i (click)="editLabTestType(labTest.labTestId);" 

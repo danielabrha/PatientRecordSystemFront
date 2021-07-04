@@ -20,7 +20,7 @@ export class DrugService {
   // Drug operation
   DrugRegistration(DrugData: any) {
     console.log(DrugData);
-    return this.http.post(`${this.urlPost1}/${1}`, DrugData);
+    return this.http.post(this.urlPost1, DrugData);
   }
   // get All Drug
   getAllDrug() {
@@ -31,7 +31,7 @@ export class DrugService {
   }
   editDrug(DrugData: any) {
    // console.log(DrugData)
-    return this.http.put(`${this.urlupdate}/${1}`, DrugData);
+    return this.http.put(this.urlupdate, DrugData);
   }
   deleteDrug(DrugId: number) {
     // console.log("the Drug ID inside of the service is ",DrugId);
