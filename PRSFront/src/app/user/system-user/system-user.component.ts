@@ -64,7 +64,7 @@ export class SystemUserComponent implements OnInit, AfterViewInit {
   }
   userRegister() {
     if (this.isEdit) {
-      this.userForm.controls['dateOfBirth'].setValue(this.userForm.value.dateOfBirth.toString());
+      this.userForm.controls['dateOfBirth'].setValue("");
       this._userService.edituser(this.userForm.value).subscribe(res => {
         this.getListUser();
         this.userForm.reset();
@@ -74,7 +74,7 @@ export class SystemUserComponent implements OnInit, AfterViewInit {
     } else {
       console.log("the date is", this.userForm.value.dateOfBirth);
 
-      this.userForm.controls['dateOfBirth'].setValue(this.userForm.value.dateOfBirth.toString());
+      this.userForm.controls['dateOfBirth'].setValue("");
       this._userService.userRegistration(this.userForm.value).subscribe(res => {
         this.getListUser();
         this.userForm.reset();

@@ -5,31 +5,38 @@ import { HttpClient } from "@angular/common/http";
 })
 export class UserService {
 
- 
+
   constructor(private http: HttpClient) { }
   urlPost1 = "http://localhost:8989/User/post/data";
   urlPostAll = "http://localhost:8989/User/post/All/data";
   urlget1 = "http://localhost:8989/User/get/data";
   urlgetAll = "http://localhost:8989/User/get/All/data";
   urlupdate = "http://localhost:8989/User/update";
-  
-  urldelete1= "http://localhost:8989/User/delete";
+
+  urldelete1 = "http://localhost:8989/User/delete";
   urldeleteAll = "http://localhost:8989/User/delete/all";
+
+  urlUserRole = "http://localhost:8989/User/userrole"
+
   url2 = "http://localhost:3000/userCard";
   // user operation
   userRegistration(userData: any) {
     console.log(userData);
     return this.http.post(this.urlPost1, userData);
   }
+  // save user role here
+  saveUserRole(roleId: any, userId: any) {
+    return this.http.post(`${this.urlUserRole}/${roleId}`, { "userId": userId });
+  }
   // get All user
   getAlluser() {
     return this.http.get(this.urlgetAll);
   }
-  getUserById(id:any) {
+  getUserById(id: any) {
     return this.http.get(`${this.urlget1}/${id}`);
   }
   edituser(userData: any) {
-   // console.log(userData)
+    // console.log(userData)
     return this.http.put(`${this.urlupdate}/${userData.userId}`, userData);
   }
   deleteuser(userId: number) {
@@ -42,12 +49,12 @@ export class UserService {
   }
   registeruserCard(userCardData: any) {
     // if (userCardData !== null) {
-      return this.http.post(this.url2,userCardData);
-     // console.log("the data inside of the service ",userCardData);
+    return this.http.post(this.url2, userCardData);
+    // console.log("the data inside of the service ",userCardData);
     // }
     // return null;
   }
-  getAlluserCard(){
+  getAlluserCard() {
     return this.http.get(this.url2);
   }
 
