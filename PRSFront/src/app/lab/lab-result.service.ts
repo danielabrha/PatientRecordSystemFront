@@ -12,7 +12,7 @@ export class LabResultService {
   urlPost1 = "http://localhost:8989/LabResult/post/data";
   urlPostAll = "http://localhost:8989/LabResult/post/All/data";
   urlget1 = "http://localhost:8989/LabResult/get/data";
-  urlgetAll = "http://localhost:8989/LabResults/get/All/data";
+  urlgetAll = "http://localhost:8989/LabResult/LabResults/get/All/data";
   urlupdate = "http://localhost:8989/LabResult/update/data";
   
   urldelete1= "http://localhost:8989/LabResult/deleteById/data";

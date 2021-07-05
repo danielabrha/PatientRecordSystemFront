@@ -18,7 +18,7 @@ export class ListPatientComponent implements OnInit {
     address: new FormControl(''),
     dateOfBirth: new FormControl(''),
     email: new FormControl(''),
-    phoneNumber: new FormControl('')
+    phoneNumber: new FormControl(0)
   });
   // datatable propertis
   title = 'datatables';

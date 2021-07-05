@@ -15,10 +15,10 @@
         <tbody>
             <tr *ngFor="let labResult of listDrugOrder;let i= index">
                 <td>{{ i+1 }}</td>
-                <td>{{ labResult.labOrder.visit.patient.fName}}  {{labResult.labOrder.visit.patient.lName}}</td>
-                <td>{{ labResult.labOrder.labTestType.labTestName }}</td>
-                <td>{{ labResult.labResultName  }}</td>
-                <td>{{ labResult.labOrder.visit.visitDate }}</td>
+                <td>{{ labResult.visit.patient.fName}}  {{labResult.visit.patient.lName}}</td>
+                <td>{{ labResult.drug.drugName }}</td>
+                <td>{{ labResult.drug.drugCode  }}</td>
+                <td>{{ labResult.visit.visitDate }}</td>
             </tr>
         </tbody>
     </table>

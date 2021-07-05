@@ -11,7 +11,7 @@ export class LabOrderServiceService {
   urlPost1 = "http://localhost:8989/LabOrder/post/data";
   urlPostAll = "http://localhost:8989/LabOrder/post/All/data";
   urlget1 = "http://localhost:8989/LabOrder/get/data";
-  urlgetAll = "http://localhost:8989/LabOrders/get/All/data";
+  urlgetAll = "http://localhost:8989/LabOrder/LabOrders/get/All/data";
   urlupdate = "http://localhost:8989/LabOrder/update";
   
   urldelete1= "http://localhost:8989/LabOrder/deleteById/data";

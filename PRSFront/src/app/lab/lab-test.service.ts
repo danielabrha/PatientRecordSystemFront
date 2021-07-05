@@ -31,9 +31,9 @@ export class LabTestService {
   getLabTestTypeById(id:any) {
     return this.http.get(`${this.urlget1}/${id}`);
   }
-  editLabTestType(LabTestTypeData: any) {
+  editLabTestType(id:any,LabTestTypeData: any) {
    // console.log(LabTestTypeData)
-    return this.http.put(`${this.urlupdate}/${1}`, LabTestTypeData);
+    return this.http.put(`${this.urlupdate}/${id}`, LabTestTypeData);
   }
   deleteLabTestType(LabTestTypeId: number) {
     // console.log("the LabTestType ID inside of the service is ",LabTestTypeId);

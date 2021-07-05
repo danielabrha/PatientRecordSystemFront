@@ -20,6 +20,7 @@ export class LabTestComponent implements OnInit {
   isSuccessRegister:boolean=false;
   labTestType: any="";
   closeModal: any;
+  tempId:any=0;
   constructor(private modalService: NgbModal,private _labTestTypeService:LabTestService) { }
  // datatable propertis
  title = 'datatables';
@@ -35,7 +36,7 @@ export class LabTestComponent implements OnInit {
   }
   registerLabTestType() {
     if(this.isEdit){
-      this._labTestTypeService.editLabTestType(this.labTestForm.value).subscribe(res=>{
+      this._labTestTypeService.editLabTestType(this.tempId, this.labTestForm.value).subscribe(res=>{
         this.getAllLabTestType();
         this.isSucessEdit=true;
         this.isEdit=false;
@@ -52,6 +53,7 @@ export class LabTestComponent implements OnInit {
   }
  
   editLabTestType(id:any){
+    this.tempId=id;
     this.isEdit=true;
       this._labTestTypeService.getLabTestTypeById(id).subscribe(res => {
         this.labTestType = res;

@@ -18,9 +18,9 @@ export class DrugOrderOrderService {
   urldeleteAll = "http://localhost:8989/DrugOrder/delete/all";
  
   // DrugOrder operation
-  DrugOrderRegistration(visitId: any,drugId:any) {
+  DrugOrderRegistration(amount:any,visitId: any,drugId:any) {
   //  console.log(DrugOrderData);
-    return this.http.post(`${this.urlPost1}/${visitId}/${drugId}`, {});
+    return this.http.post(`${this.urlPost1}/${visitId}/${drugId}`, {"amount":amount});
   }
   // get All DrugOrder
   getAllDrugOrder() {

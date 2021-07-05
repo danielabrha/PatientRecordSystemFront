@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {AppRoutingModule} from '../app-routing.module'
 import {RouterModule} from '@angular/router'
-
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -19,7 +19,7 @@ import { LoginComponent } from './login/login.component';
   imports: [
     CommonModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,FormsModule,ReactiveFormsModule
   ],
   exports:
   [

@@ -35,14 +35,14 @@ export class SystemUserComponent implements OnInit, AfterViewInit {
   // dtOptions: DataTables.Settings = {};
   userForm = new FormGroup({
     fName: new FormControl(''),
-    userId: new FormControl(''),
+    userId: new FormControl(0),
     lName: new FormControl(''),
     mName: new FormControl(''),
     gender: new FormControl(''),
     address: new FormControl(''),
     dateOfBirth: new FormControl(''),
     email: new FormControl(''),
-    phoneNumber: new FormControl('')
+    phoneNumber: new FormControl(0)
   });
   constructor(private _userService: UserService, private modalService: NgbModal) {
 
@@ -69,6 +69,7 @@ export class SystemUserComponent implements OnInit, AfterViewInit {
         this.getListUser();
         this.userForm.reset();
         this.isSucessEdit = true;
+        this.isEdit=false;
         this.getListUser();
       })
     } else {

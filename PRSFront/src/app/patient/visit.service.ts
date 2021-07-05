@@ -9,7 +9,7 @@ export class VisitService {
   urlPost1 = "http://localhost:8989/Visit/post/data";
   urlPostAll = "http://localhost:8989/Visit/post/All/data";
   urlget1 = "http://localhost:8989/Visit/get/data";
-  urlgetAll = "http://localhost:8989/Visits/get/All/data";
+  urlgetAll = "http://localhost:8989/Visit/Visits/get/All/data";
   urlupdate = "http://localhost:8989/Visit/update";
   
   urldelete1= "http://localhost:8989/Visit/delete";

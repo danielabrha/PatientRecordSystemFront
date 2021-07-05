@@ -70,7 +70,7 @@ export class OrderDrugComponent implements OnInit {
 
     for (let selectedDrugId of this.selectedDrug) {
       this.eableDrugTable = true;
-      this.drugOrderSerice.DrugOrderRegistration(this.selectedpatientId, selectedDrugId
+      this.drugOrderSerice.DrugOrderRegistration(this.amount,this.selectedpatientId, selectedDrugId
       ).subscribe(res => {
         console.log(res);
       })

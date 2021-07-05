@@ -65,7 +65,7 @@
         </div>
         <div class="form-group col-md-3">
             <label for="phoneNumber">Phone Number<span class="spanStart" style="color: red;">*</span></label>
-            <input type="text" formControlName="phoneNumber" class="form-control" id="phoneNumber">
+            <input type="number" formControlName="phoneNumber" class="form-control" id="phoneNumber">
         </div>
         <div class="form-group col-md-3">
             <label for="email">Email<span class="spanStart" style="color: red;">*</span></label>
@@ -96,8 +96,6 @@
                     <th scope="col">First Name</th>
                     <th scope="col">Last Name</th>
                     <th scope="col">Middle Name</th>
-
-                    <th scope="col">Date Of Birth</th>
                     <th scope="col">Gender</th>
                     <th scope="col">Address</th>
                     <th scope="col">Zip</th>
@@ -111,7 +109,6 @@
                     <td>{{user.fName}}</td>
                     <td>{{user.lName}}</td>
                     <td>{{user.mName}}</td>
-                    <td>{{user.dateOfBirth}}</td>
                     <td>{{user.gender}}</td>
                     <td>{{user.address}}</td>
                     <td>{{user.zip}}</td>

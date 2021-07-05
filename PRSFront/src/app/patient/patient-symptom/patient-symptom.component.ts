@@ -106,8 +106,9 @@ export class PatientSymptomComponent implements OnInit {
     this.symptomObje.symptomName = this.symptom;
     this.patientSymService.SymptomRegistration(this.symptomObje, this.selectedpatientId).subscribe(async res => {
       // await  this.getAllSymptom();
-      this.symptom = "";
-      await this.getSelectedSymptom();
+      this.listSymptomGivenVisit.push(res);
+      // this.symptom = "";
+      // this.getSelectedSymptom();
     })
   }
 

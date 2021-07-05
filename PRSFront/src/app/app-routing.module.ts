@@ -64,7 +64,7 @@ const routes: Routes = [
   {
     path: 'add/lab/labResult',
     component: LabResultComponent
-  },
+  }, 
   {
     path: 'drug',
     component: DrugComponent

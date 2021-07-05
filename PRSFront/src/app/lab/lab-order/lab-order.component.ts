@@ -78,6 +78,9 @@ export class LabOrderComponent implements OnInit {
       this.labOrderService.LabOrderRegistration(this.selectedpatientId, selectedLabType
       ).subscribe(res => {
         console.log(res);
+        this.getAllLabTestOrder();
+        this.selectedpatientId = 0;
+        this.selectedLabTestType = [];
       })
     }
   }

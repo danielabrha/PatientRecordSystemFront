@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { VisitService } from 'src/app/patient/visit.service';
 import { LabOrderServiceService } from '../lab-order-service.service';
 import { LabResultService } from '../lab-result.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-lab-result',
   templateUrl: './lab-result.component.html',
@@ -16,7 +16,7 @@ export class LabResultComponent implements OnInit {
   selectedpatientId: Number = 0;
   constructor(private visitService: VisitService,
      private labOrderService: LabOrderServiceService,
-     private labResultService:LabResultService) { }
+     private labResultService:LabResultService,private router:Router) { }
 
   ngOnInit(): void {
     this.getAllPatient();
@@ -40,7 +40,11 @@ export class LabResultComponent implements OnInit {
     })
   }
   submitData() {
+    var counter=1;
     for (let labresult of this.listOfSelectedOrder) {
+    
+    //  console.log( this.listOfSelectedOrder.length)
+      counter++;
            // get the order id
            let orderId=labresult.labOrderId;
            // access the data inside of  that id
@@ -48,6 +52,9 @@ export class LabResultComponent implements OnInit {
            this.labResultService.LabResultRegistration(result,orderId).subscribe(res=>{
              console.log(res);
            })
+if(counter == this.listOfSelectedOrder.length){
+  this.router.navigateByUrl("/lab/labResult")
+}
     }
   }
 }

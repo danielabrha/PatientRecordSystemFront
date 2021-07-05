@@ -10,7 +10,7 @@ export class PatientSymptomService {
   urlPost1 = "http://localhost:8989/Symptom/post/data";
   urlPostAll = "http://localhost:8989/Symptom/post/All/data";
   urlget1 = "http://localhost:8989/Symptom/get/data";
-  urlgetAll = "http://localhost:8989/Symptoms/get/All/data";
+  urlgetAll = "http://localhost:8989/Symptom/Symptoms/get/All/data";
   urlupdate = "http://localhost:8989/Symptom/update";
   
   urldelete1= "http://localhost:8989/Symptom/deleteById/data";

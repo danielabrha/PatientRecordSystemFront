@@ -34,7 +34,6 @@
       <th>First Name</th>
       <th>Last Name</th>
       <th>Middle Name</th>
-      <th>DateOfBirth</th>
       <th>Gender</th>
       <th>patient Card Number</th>
       <th>Operations</th>
@@ -46,7 +45,6 @@
       <td>{{ patient.fName }}</td>
       <td>{{ patient.lName }}</td>
       <td>{{ patient.mName }}</td>
-      <td>{{ patient.dateOfBirth }}</td>
       <td>{{ patient.gender }}</td>
       <td>{{ patient.cardRecordNumber }}</td>
       <td> <i (click)="editPatient(modalDataEdit,patient.patientId);" 
@@ -133,7 +131,7 @@
           </div>
           <div class="form-group col-md-3">
               <label for="phoneNumber">Phone Number<span class="spanStart" style="color: red;">*</span></label>
-              <input type="text" formControlName="phoneNumber" class="form-control" id="phoneNumber">
+              <input type="number" formControlName="phoneNumber" class="form-control" id="phoneNumber">
           </div>
           <div class="form-group col-md-5">
               <label for="email">Email<span class="spanStart" style="color: red;">*</span></label>
